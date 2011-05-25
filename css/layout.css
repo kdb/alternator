@@ -144,69 +144,69 @@ body:not(.front) .bottom-menu li:not(.frontpage):not(.mainsite):nth-child(odd) >
   margin: 1em;
 }
 
-
-
-/* lists */
+/********
+ * Lists
+ ********/
 h1,
 #ting-collection h1,
 .pane-title {
-  background: #f39500;
-  padding:0.5em 0 0.5em 1em;
-  display:block;
-  text-transform:uppercase;
-  font-size:13px;
-  margin:0;
-  margin-top:5px;
-  margin-bottom:1px;
-  font-weight:bold;
+  background: #D1E02B;
+  padding: 0.5em 0 0.5em 1em;
+  display: block;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin: 5px 0 1px 0;
+  font-weight: bold;
 }
 
 h2 {
-  background: #c0c0c0;
-  padding:0.5em 0 0.5em 1em;
-  display:block;
-  text-transform:uppercase;
-  font-size:13px;
-  margin:0;
-  margin-top:5px;
-  margin-bottom:1px;
-  font-weight:bold;
+  background: #C0C0C0;
+  padding: 0.5em 0 0.5em 1em;
+  display: block;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin: 0;
+  margin-top: 5px;
+  margin-bottom: 1px;
+  font-weight: bold;
 }
 
 h2.articleheader {
-  background:none;
-  text-transform:none;
-  padding:0;
-  margin-bottom:10px;
+  background: none;
+  text-transform: none;
+  padding: 0;
+  margin-bottom: 10px;
 }
 
 .more-link{
-  text-align:left;
+  text-align: left;
 }
 
 .view-mobile-articles a .views-field-created,
 .view-mobile-events a .views-field-field-datetime-value{
-  color:#a1a1a2;
+  color: #A1A1A2;
 }
 
 
-/* Reset mini pager */
+/*******************
+ * Reset mini pager
+ *******************/
 .item-list .pager{
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 .item-list .pager li{
-  float:left;
-  margin:0;
-  padding:0;
+  float: left;
+  margin: 0;
+  padding: 0;
 }
 .item-list .pager li.pager-previous,
 .item-list .pager li.pager-next{
-  width:40%;
+  width: 40%;
 }
 .pager li.pager-current{
-  width:20%;
-  padding:1em 0;
+  width: 20%;
+  padding: 1em 0;
 }
 .item-list .pager li a{
   display:block;
@@ -214,90 +214,91 @@ h2.articleheader {
   padding:1em 0;
 }
 
-/* reset lists*/
-
+/*********************
+ * Reset list styling
+ *********************/
 .reset-list ul{
-  margin:0;
-  padding:0;
-  list-style:none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
+
 .reset-list ul li{
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
 }
 
-/* gray buttons */
-
+/***************************************
+ * Inline menu links (The gray buttons)
+ ***************************************/
 .graybox-btns a{
-  display:block;
-  padding:1em 3em 1em 1em;
-  background: #f0f0f0 url('../images/arrow.png') no-repeat right center;
-  color:#000;
-  text-decoration:none;
-  margin-top:3px;
+  display: block;
+  padding: 1em 3em 1em 1em;
+  background: #F0F0F0 url('../images/arrow.png') no-repeat right center;
+  color: #000;
+  text-decoration: none;
+  margin-top: 3px;
 }
+
 .graybox-btns .attachment a{
- padding:0;
- background-color: transparent; 
- margin:0;
+  padding: 0;
+  background-color: transparent;
+  margin: 0;
 }
+
 .graybox-btns .attachment .views-field-title,
 .graybox-btns .attachment .views-field-created,
 .graybox-btns .attachment .views-field-body,
 .graybox-btns .attachment .date-display-single{
-  padding-left:1em;
-  padding-right:3em;
-}
-.graybox-btns .attachment .date-display-start{
-  padding-left:1em;
+  padding-left: 1em;
+  padding-right: 3em;
 }
 
+.graybox-btns .attachment .date-display-start{
+  padding-left: 1em;
+}
 
 .graybox-btns .attachment .views-field-title{
-  padding-top:1em;
-  padding-bottom:1em;
-  font-weight:bold;
-}
-.graybox-btns .attachment .views-field-body{
-  padding-bottom:2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-weight: bold;
 }
 
+.graybox-btns .attachment .views-field-body{
+  padding-bottom: 2em;
+}
 
 /* strange resets */ 
- 
 .feed-icon{
-  display:none;
+  display: none;
 }
  
- .pane-recommendation-list h3{
-   display:none;
- }
+.pane-recommendation-list h3{
+  display: none;
+}
  
- 
- #ding-reservation-confirm-form > div p, #ding-reservation-confirm-form > div div{
-   margin:1em;
- }
-  
+#ding-reservation-confirm-form > div p, #ding-reservation-confirm-form > div div{
+  margin: 1em;
+}
 
 /* ui resets */
-
 .ui-tabs-nav{
-  display:none;
+  display: none;
 }
 .ui-tabs-panel{
-  border:0 none;
-  background:transparent none;
-  padding:0;
-  font-size:inherit;
+  border: 0 none;
+  background: transparent none;
+  padding: 0;
+  font-size: inherit;
 }
 
 
 #drupal-messages .status{
-  background-color:#F0F0F0;
-  padding:10px; 
+  background-color: #F0F0F0;
+  padding: 10px;
 }
 .pane-ding-debt-notice{
-  margin-left:10px;
+  margin-left: 10px;
 }
 
 /***************

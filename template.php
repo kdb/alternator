@@ -43,10 +43,10 @@ function alternator_preprocess_page(&$variables){
   $bottom_menu = menu_navigation_links('menu-mobile-bottom-menu');
 
   // Add link to the desktop version
-  $bottom_menu['mainsite'] = array('href' => variable_get('mobile_tools_desktop_url',''),'title' => t('Gå til biblioteks hjemmeside'));
+  $bottom_menu['mainsite'] = array('href' => variable_get('mobile_tools_desktop_url',''),'title' => t('Go to the library site'));
 
   if(!drupal_is_front_page()){
-    $bottom_menu = array_merge(array('frontpage' => array('href' => '<front>', 'title' => t('Frontpage'))), $bottom_menu);
+    $bottom_menu = array_merge(array('frontpage' => array('href' => '<front>', 'title' => t('Front page'))), $bottom_menu);
   }
   $variables['bottom_menu'] = theme('links', $bottom_menu, array('class' => 'bottom-menu blackmenu clear-block'));
 }
@@ -106,10 +106,7 @@ function alternator_theme() {
  * Theme function used to change the login box.
  */
 function alternator_preprocess_user_login(&$variables){
-  
-  $variables['form']['name']['#title'] = 'Cpr- eller kortnummer';
   unset($variables['form']['name']['#description']);
-  $variables['form']['pass']['#title'] = 'Pinkode';
   unset($variables['form']['pass']['#description']);
   $variables['form']['pass']['#suffix'] = '<p>'.t('tekst der skal stå efter login').'</p>';
   
@@ -117,7 +114,8 @@ function alternator_preprocess_user_login(&$variables){
 }
 
 /**
- * Theme function that can be used to remove stuff form the search form.
+ * Theme function that can be used to remove stuff form the search form. The
+ * h2 headline can be disabled on the block for current theme.
  */
 function alternator_ting_search_form(&$form){
   unset($form['example_text']);
