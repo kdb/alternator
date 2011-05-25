@@ -1,8 +1,10 @@
 <?php 
 
-
+/**
+ * Implementation of hook_preprocess_node.
+ */
 function alternator_preprocess_node(&$vars){
-  
+  global $language;
 
   if(in_array($vars['type'],array('article','event'))){
   
@@ -12,52 +14,43 @@ function alternator_preprocess_node(&$vars){
     unset($vars['field_content_images_rendered']);
     unset($vars['field_file_attachments_rendered']);
     
-    #var_dump($vars);
-    
-    $vars['submitted'] = format_date($vars['created'],'large','Europe/Copenhagen','dk');
+    $vars['submitted'] = format_date($vars['created'], 'large', 'Europe/Copenhagen', $language->language);
     
     if($vars['type'] == 'event'){
       $vars['submitted'] = $vars['node']->field_datetime[0]['view'];
-      
       $vars['price'] = $vars['node']->field_entry_price[0]['view'];
-      #var_dump($vars['node']->field_entry_price);
-    }
-    
+    }    
     $vars['content'] = $vars['node']->content['body']['#value'];
-    
-  
   }
-  
- #var_dump($vars['node']);
-  
 }
 
-
-
 /**
- * Implementation of hook_preprocess_page
- * 
- * @param unknown_type $variables
+ * Implementation of hook_preprocess_page.
  */
 function alternator_preprocess_page(&$variables){
   
-  if(in_array('page-user-login',$variables['template_files'])){
+  if(in_array('page-user-login', $variables['template_files'])){
     $variables['content'] = '<h1>'.t('Login').'</h1>'.$variables['content'];
   }
-  if(in_array('page-user-status',$variables['template_files'])){
+  if(in_array('page-user-status', $variables['template_files'])){
     $variables['content'] = '<h1>'.t('Min konto').'</h1>'.$variables['content'];
   }
   
-  //var_dump($variables);
+  // Render the main navigation menu
+  $variables['main_menu'] = theme('links', menu_navigation_links('menu-mobile-menu'), array('class' => 'top-menu blackmenu clear-block'));
   
-  $variables['mobilemainmenu'] = menu_navigation_links('menu-mobile-menu');
-  $mobilebottommenu = menu_navigation_links('menu-bottom-menu');
-  $mobilebottommenu['mainsite'] = array('href' => variable_get('mobile_tools_desktop_url',''),'title' => t('Gå til koldingbibliotekerners hjemmeside'));
+  // Get bottom navigation links
+  $bottom_menu = menu_navigation_links('menu-mobile-bottom-menu');
+
+  // Add link to the desktop version
+  $bottom_menu['mainsite'] = array('href' => variable_get('mobile_tools_desktop_url',''),'title' => t('Gå til biblioteks hjemmeside'));
+
   if(!drupal_is_front_page()){
-    $mobilebottommenu = array_merge(array( 'frontpage' => array('href' => '<front>','title' => t('Forsiden'))),$mobilebottommenu);
-  } 
-  $variables['mobilebottommenu'] = $mobilebottommenu; 
+    $bottom_menu = array_merge(array('frontpage' => array('href' => '<front>', 'title' => t('Frontpage'))), $bottom_menu);
+  }
+  $variables['bottom_menu'] = theme('links', $bottom_menu, array('class' => 'bottom-menu blackmenu clear-block'));
 }
+
 function format_danmarc2($string){
   $string = str_replace('Indhold:','',$string);
   $string = str_replace(' ; ','<br/>',$string);
@@ -65,6 +58,10 @@ function format_danmarc2($string){
 
   return $string;
 }
+
+/**
+ * Implementation of hook_feed_icon.
+ */
 function alternator_feed_icon($url) {
   if ($image = theme('image', drupal_get_path('theme', 'dynamo').'/images/feed.png', t('RSS feed'), t('RSS feed'))) {
     // Transform view expose query string in to drupal style arguments -- ?library=1 <-> /1
@@ -89,25 +86,42 @@ function alternator_feed_icon($url) {
   }
 }
 
-
+/**
+ * Implementation of hook_theme.
+ */
 function alternator_theme() {
   return array(
     'user_login' => array(
       'template' => 'user-login',
       'arguments' => array('form' => NULL),
     ),
+    'ting_search_form' => array(
+      'arguments' => array('form' => NULL),
+      'preprocess' => array('alternator_preprocess_ting_search_form'),
+    ),
   );
 }
 
+/**
+ * Theme function used to change the login box.
+ */
 function alternator_preprocess_user_login(&$variables){
   
   $variables['form']['name']['#title'] = 'Cpr- eller kortnummer';
   unset($variables['form']['name']['#description']);
-  $variables['form']['pass']['#title'] = 'Pinkode (4 tal)';
+  $variables['form']['pass']['#title'] = 'Pinkode';
   unset($variables['form']['pass']['#description']);
   $variables['form']['pass']['#suffix'] = '<p>'.t('tekst der skal stå efter login').'</p>';
   
   $variables['rendered'] = drupal_render($variables['form']);
+}
+
+/**
+ * Theme function that can be used to remove stuff form the search form.
+ */
+function alternator_ting_search_form(&$form){
+  unset($form['example_text']);
+  return drupal_render($form);
 }
 
 function alternator_ding_library_user_loan_list_form($form) {
@@ -136,21 +150,11 @@ function alternator_ding_library_user_loan_list_form($form) {
         'class' => 'col-selection',
       ),
     ),
-    /*array(
-      array(
-        'class' => 'col-image',
-      ),
-    ),*/
     array(
       array(
         'class' => 'col-title',
       ),
     ),
- /*   array(
-      array(
-        'class' => 'col-loan-date',
-      ),
-    ),*/
     array(
       array(
         'class' => 'col-due-date',
@@ -183,20 +187,10 @@ function alternator_ding_library_user_loan_list_form($form) {
         'data' => drupal_render($form['loans'][$loan_id]),
       );
 
-   /*   $cells['image'] = array(
-        'class' => 'image',
-        'data' => theme('ding_library_user_list_item_image', 'loan', $loan, '80_x'),
-      );*/
-
       $cells['title'] = array(
         'class' => 'title',
         'data' => theme('ding_library_user_list_item', 'loan', $loan),
       );
-
-    /*  $cells['loan_date'] = array(
-        'class' => 'loan_date',
-        'data' => ding_library_user_format_date($loan['loan_date'], $date_format),
-      );*/
 
       $cells['due_date'] = array(
         'class' => 'due_date',
