@@ -1,62 +1,63 @@
-
-.ting-item-full .ting-status{
-  margin:1em;
+.ting-item-full .ting-status {
+  margin :1em;
 }
 
-#ting-object .picture{
-  
-}
-.landscape #ting-object .picture{
-  float:left;
-  width:180px;
-}
-#ting-object .picture img{
-  float:left;
-  width:80px;
+.landscape #ting-object .picture {
+  float: left;
+  width: 80px;
 }
 
-.rightofpic{
-  padding:1em;
-  font-size:1em;
+#ting-object .picture {
+  margin-left: 1em;
+  margin-top: 1em;
 }
-.rightofpic{
-  display:block;
-  padding:1em;
-  margin-left:80px;
-  
+
+#ting-object .picture img {
+  float: left;
+  width: 80px;
+}
+
+.right-of-pic {
+  padding: 1em;
+  font-size: 1em;
+}
+
+.right-of-pic {
+  display: block;
+  padding: 1em;
+  margin-left: 100px;
   -webkit-text-size-adjust: 100%;
 }
 
-.landscape .rightofpic{
-  margin-left:180px;  
+.landscape .right-of-pic {
+  margin-left: 100px;
 }
 
-
-#ting-object .item-list{
-  position:relative;
+#ting-object .item-list {
+  position: relative;
 }
 
-#ting-object .item-list h3{
-  position:absolute;
-  left:0;
-  margin:0;
-  font-size:1em;
-}
-#ting-object .item-list ul{
-  display:inline;
-  margin-left:100px;
-}
-#ting-object .item-list li{
-  display:inline;
-  margin:0;
+#ting-object .item-list h3 {
+  position: absolute;
+  left: 0;
+  margin: 0;
+  font-size: 1em;
 }
 
+#ting-object .item-list ul {
+  display: inline;
+  margin-left: 100px;
+}
 
-#ting-object .ting-object-buttons .item-list  ul{
-  margin:0;
+#ting-object .item-list li {
+  display: inline;
+  margin: 0;
+}
+
+#ting-object .ting-object-buttons .item-list  ul {
+  margin: 0;
 } 
 
-.ting-object-buttons a{
-  display:none;
+.ting-object-buttons a {
+  display: none;
 }
-

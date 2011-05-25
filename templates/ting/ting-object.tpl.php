@@ -42,7 +42,7 @@
   </div>
   <?php } ?>
   
-  <div class="rightofpic clear-block">
+  <div class="right-of-pic clear-block">
     
     <div class='creator'>
       <span class='byline'><?php echo ucfirst(t('by')); ?></span>
