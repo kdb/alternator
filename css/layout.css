@@ -217,13 +217,15 @@ h2.articleheader {
 /*********************
  * Reset list styling
  *********************/
-.reset-list ul{
+.reset-list,
+.reset-list ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.reset-list ul li{
+.reset-list li,
+.reset-list ul li {
   padding: 0;
   margin: 0;
 }
