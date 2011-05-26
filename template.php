@@ -37,7 +37,7 @@ function alternator_preprocess_page(&$variables){
   }
   
   // Render the main navigation menu
-  $variables['main_menu'] = theme('links', menu_navigation_links('menu-mobile-menu'), array('class' => 'top-menu blackmenu clear-block'));
+  $variables['main_menu'] = theme('links', menu_navigation_links('menu-mobile-menu'), array('class' => 'top-menu mobilemenu clear-block'));
   
   // Get bottom navigation links
   $bottom_menu = menu_navigation_links('menu-mobile-bottom-menu');
@@ -48,7 +48,7 @@ function alternator_preprocess_page(&$variables){
   if(!drupal_is_front_page()){
     $bottom_menu = array_merge(array('frontpage' => array('href' => '<front>', 'title' => t('Front page'))), $bottom_menu);
   }
-  $variables['bottom_menu'] = theme('links', $bottom_menu, array('class' => 'bottom-menu blackmenu clear-block'));
+  $variables['bottom_menu'] = theme('links', $bottom_menu, array('class' => 'bottom-menu mobilemenu clear-block'));
 }
 
 function format_danmarc2($string){

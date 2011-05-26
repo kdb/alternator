@@ -74,14 +74,14 @@ body.page-user table {
 /****************
  * Menu settings
  ****************/
-.blackmenu {
+.mobilemenu {
   margin:0;
   padding:1px 0 0 0;
   border-top: 1px solid #000;
   border-bottom:1px solid #000; 
 }
 
-.blackmenu li{
+.mobilemenu li{
   list-style:none;
   width:50%;
   float:left;
@@ -89,7 +89,7 @@ body.page-user table {
 
 }
 
-.blackmenu li a{
+.mobilemenu li a{
   background: #000;
   color:#fff;
   display:block;
