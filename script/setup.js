@@ -24,7 +24,7 @@ $(function(){
   $('input.ting-autocomplete').each(function () {
 		$(this).unbind();		
 		
-		$(".top label").inFieldLabels({
+		$("#search label").inFieldLabels({
 		    fadeOpacity:"0.2",
 		    fadeDuration:"100"			
 		  });
