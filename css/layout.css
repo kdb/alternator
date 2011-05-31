@@ -137,10 +137,11 @@ body:not(.front) .bottom-menu li:not(.frontpage):not(.mainsite):nth-child(odd) >
 .imagecache-mobile-list-image{
   width: 100%;
   height: auto;
+  display: block;
 }
 
-/* Fix margin for news and event content */
-.panel-pane .pane-content div.node{
+.node .meta,
+.node .content {
   margin: 1em;
 }
 
@@ -350,6 +351,20 @@ div {
   overflow: hidden;
 }
 
+.collapsible-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.collapsible-list .title-collapsible {
+  padding: 4px 0 6px 32px;
+}
+
+.collapsible-list .collapsible-info {
+  padding: 0.5em 1em 1em 32px;
+  background: transparent;
+}
+
 /* !----- FORMS ----- */
 input[type=text], 
 input[type=password],
@@ -472,3 +487,22 @@ th {
   padding-bottom: 0.3em;
 }
 
+/* ! ----- / Aabningstider ----- */
+.office-hours-week .week-info {
+  display: none;
+}
+
+.office-hours-week .day {
+  width: 30%;
+  display: inline-block;
+}
+
+.collapsible-list .title-collapsible {
+  background-image: url(../images/arrow-down-black.png);
+  background-position: 0.9em 0.4em;
+  background-repeat:  no-repeat;
+}
+
+.collapsible-list .title-collapsible.collapsed {
+  background-image: url(../images/arrow-right-black.png);
+}
