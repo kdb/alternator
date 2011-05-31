@@ -7,8 +7,7 @@
 }
 
 #ting-collection .ting-item {
-  margin-left: 1em;
-  margin-bottom: 0.5em;
+  margin-bottom: 0;
 }
 
 #ting-search-result li, #ting-collection .content {
@@ -101,4 +100,40 @@
 }
 .ting-search-collection-types li.unavailable {
   background-color: #F85F26 !important;
+}
+
+/* !----- TING SEARCH ----- */
+#ting-search-result .graybox-btns a,
+#ting-collection .graybox-btns a {
+  padding: 0.5em 3em 0.5em 1em;
+}
+
+.page-ting .ting-search-collection-types {
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+#ting-search-result p.abstract {
+  margin-top: 4px;
+}
+
+#ting-collection .picture, 
+#ting-search-result .picture {
+  margin: 0.5em 0 0.5em;
+}
+
+.unavailable, .unreservable, .available, .waiting {
+  background: none repeat scroll 0 0 #F85F26;
+  color: #FFFFFF;
+  display: inline-block;
+  margin: 5px 5px 5px 0;
+  padding: 2px;
+}
+
+.available {
+  background: #71BF44;
+}
+
+.reserved {
+  background: #6B0046;
 }

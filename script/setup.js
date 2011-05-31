@@ -73,3 +73,8 @@ window.addEventListener("onorientationchange" in window ? "orientationchange" : 
 		document.body.className = document.body.className.replace(' landscape','');
 	}
 }, false);
+
+$(document).ready(function(){
+  $(".sticky-element").sticky({topSpacing:0,className:'sticky'});
+  
+});

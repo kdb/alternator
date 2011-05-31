@@ -40,25 +40,21 @@
       <?php print $object->creators_string ?></span>
       <span class='date'><?php print $date; ?></span>
 
+      <?php
+        // TODO: This should go into ting_availability.
+      if ($type != 'Netdokument') { ?>
+      <div><div class="ting-status waiting">Afventer data…</div></div>
+      <?php } ?>
+
       <div class='language'><?php echo t('Language') . ': ' . $language; ?></div>
+
       <?php
       foreach ($additional_creators as $creator) {
         print "<p>" . $creator . "</p>";
       }
       ?>
 
-      <?php
-        // TODO: This should go into ting_availability.
-      if ($type != 'Netdokument') { ?>
-      <div class="ting-status waiting">Afventer data…</div>
-      <?php } ?>
     </div>
-
-  <?php if ($buttons) :?>
-    <div class="ting-object-buttons">
-      <?php #print theme('item_list', $buttons, NULL, 'ul', array('class' => 'buttons')) ?>
-    </div>
-  <?php endif; ?>
 </a>
 </div>
 </div>

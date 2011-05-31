@@ -33,4 +33,5 @@ stylesheets[handheld][]  = css/mobile.css
 
 ;--------------------- scripts ----------------------------
 scripts[] = script/jquery.infieldlabel.min.js
+scripts[] = script/jquery.sticky.js
 scripts[] = script/setup.js

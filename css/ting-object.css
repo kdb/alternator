@@ -61,3 +61,67 @@
 .ting-object-buttons a {
   display: none;
 }
+
+/* !v¾rkvisning */
+#ting-collection .language {
+  margin-top: 4px;
+}
+
+/* !materialevisning */
+div.abstract {
+  margin-top: 8px;
+}
+
+#ting-object .ting-status {
+  margin: 0;
+  display: block;
+  padding-left: 100px;
+}
+
+#ting-object .picture {
+  margin-left: 0;
+}
+
+#ting-object h1 {
+  margin-bottom: 0;
+}
+
+#ting-object .ting-object-buttons {
+  margin-top: 12px;
+}
+
+.right-of-pic {
+  padding: 1em 1em 1em 0;
+}
+
+#ting-object .additional-info .item-list {
+  padding: 3px 0 1px 100px;
+}
+
+#ting-object .additional-info .item-list h3 {
+  left: 0;
+  position: static;
+}
+
+#ting-object .additional-info .item-list ul {
+    display: block;
+    margin: 0 0 0.2em;
+}
+
+.additional-info {
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+}
+
+#ting-object .title-collapsible {
+  padding-left: 100px;
+  padding-bottom: 12px;
+  background-image: url(../images/arrow-down-black.png);
+  background-position: 80px 0.6em;
+  background-repeat:  no-repeat;
+  margin-top: 20px;
+}
+
+#ting-object .title-collapsible.collapsed {
+  background-image: url(../images/arrow-right-black.png);
+}

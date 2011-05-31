@@ -30,14 +30,14 @@
         (<?php echo $collection->date /* TODO: Improve date handling, localizations etc. */ ?>)
       </span>
       <?php endif; ?>
+      <div class="types">
+        <?php print $type_list; ?>
+      </div>
       <?php if ($collection->abstract) : ?>
       <p class="abstract">
         <?php print check_plain($collection->abstract); ?>
       </p>
       <?php endif; ?>
-      <div class="types">
-        <?php print $type_list; ?>
-      </div>
     </a>
     </div>
   </li>

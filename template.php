@@ -49,6 +49,7 @@ function alternator_preprocess_page(&$variables){
     $bottom_menu = array_merge(array('frontpage' => array('href' => '<front>', 'title' => t('Front page'))), $bottom_menu);
   }
   $variables['bottom_menu'] = theme('links', $bottom_menu, array('class' => 'bottom-menu mobilemenu clear-block'));
+  
 }
 
 function format_danmarc2($string){
@@ -136,7 +137,14 @@ function alternator_ding_library_user_loan_list_form($form) {
         $form['top_buttons'][$key]['#id'] .= '-top';
       }
     }
+    // Wrap top buttons in a wrapper div. This is a hack, sorry :-(
+    $form['top_buttons']['renew']['#prefix'] = '<div class="sticky-element">';
+    $form['top_buttons']['renew_all']['#suffix'] = '</div>';
+
     $output .= drupal_render($form['top_buttons']);
+    
+    // Remove form buttons from bottom of the form
+    unset($form['buttons']);
   }
 
   $header = array(t('Select'), '', t('Title'), t('Loan date'), t('Due date'));
@@ -176,6 +184,7 @@ function alternator_ding_library_user_loan_list_form($form) {
     }
 
     $rows = array();
+    
     foreach ($group as $loan_id) {
       $loan = $form['loan_data']['#value'][$loan_id];
       $cells = array();
@@ -220,6 +229,25 @@ function alternator_ding_reservation_list_form($form) {
   $date_format = variable_get('date_format_date_short', 'Y-m-d');
   $output = '';
   module_load_include('client.inc', 'ting');
+
+  if ($form['buttons']) {
+    $form['top_buttons'] = $form['buttons'];
+    // Add suffix to duplicated form button ids to ensure uniqueness
+    foreach (element_children($form['top_buttons']) as $key) {
+      if (isset($form['top_buttons'][$key]['#id'])) {
+        $form['top_buttons'][$key]['#id'] .= '-top';
+      }
+    }
+    // Wrap top buttons in a wrapper div. This is a hack, sorry :-(
+    $form['top_buttons']['update']['#prefix'] = '<div class="sticky-element">';
+    $form['top_buttons']['remove']['#suffix'] = '</div>';
+
+    $output .= drupal_render($form['top_buttons']);
+
+    // Remove form buttons from bottom of the form
+    unset($form['buttons']);
+  }
+
 
   if (!empty($form['reservations']['#grouped']['fetchable'])) {
     $header = array(
