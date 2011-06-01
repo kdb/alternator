@@ -124,4 +124,6 @@ div.abstract {
 
 #ting-object .title-collapsible.collapsed {
   background-image: url(../images/arrow-right-black.png);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
 }

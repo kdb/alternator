@@ -505,4 +505,5 @@ th {
 
 .collapsible-list .title-collapsible.collapsed {
   background-image: url(../images/arrow-right-black.png);
+  padding-bottom: 12px;
 }
