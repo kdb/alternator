@@ -37,20 +37,30 @@ $(document).ready(function(){
   });
 
   // Detecte collapsible items
-  $('.title-collapsible').toggle(
+  $('.title-collapsible').click(
     function() {
-      // Display item and remove class.
-      $(this).removeClass('collapsed')
-      $('.collapsible-info', $(this).parent()).removeClass('collapsed').slideDown(200);
-    },
-    function() {
-      // Hide item and add class.
-      $(this).addClass('collapsed')
-      $('.collapsible-info', $(this).parent()).slideUp(200).addClass('collapsed');
-   });
+      // Toggle do not work here as the first element is not collapsed.
+      var item = $('.collapsible-info', $(this).parent());
+      if (item.is(':visible')) {
+        // Hide item and add class.
+        $(this).addClass('collapsed');
+        $('.collapsible-info', $(this).parent()).slideUp(200).addClass('collapsed');
+      }
+      else {
+        // Display item and remove class.
+        $(this).removeClass('collapsed');
+        $('.collapsible-info', $(this).parent()).removeClass('collapsed').slideDown(200);
+      }
+     }
+    );
+
    // Collapse add collapsible items and add class.
    $('.title-collapsible').addClass('collapsed');
    $('.collapsible-info').hide().addClass('collapsed');
+
+   // If the a list is wrappe in collapsible-list, then unfold first item.
+   $('.collapsible-list .title-collapsible:first').removeClass('collapsed');
+   $('.collapsible-list .collapsible-info:first').show().removeClass('collapsed');
 });
 
 
