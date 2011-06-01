@@ -30,12 +30,6 @@ $(document).ready(function(){
     });		
   });
 
-  // Enable sticky behaviour to elements (user/status page buttons mostly).
-  $(".sticky-element").sticky({
-    topSpacing:0,
-    className:'sticky'
-  });
-
   // Detecte collapsible items
   $('.title-collapsible').click(
     function() {
