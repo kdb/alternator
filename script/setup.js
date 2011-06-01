@@ -40,13 +40,16 @@ $(document).ready(function(){
   $('.title-collapsible').toggle(
     function() {
       // Display item and remove class.
+      $(this).removeClass('collapsed')
       $('.collapsible-info', $(this).parent()).removeClass('collapsed').slideDown(200);
     },
     function() {
       // Hide item and add class.
+      $(this).addClass('collapsed')
       $('.collapsible-info', $(this).parent()).slideUp(200).addClass('collapsed');
    });
    // Collapse add collapsible items and add class.
+   $('.title-collapsible').addClass('collapsed');
    $('.collapsible-info').hide().addClass('collapsed');
 });
 
