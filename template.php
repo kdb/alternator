@@ -93,12 +93,10 @@ function alternator_feed_icon($url) {
 function alternator_theme() {
   return array(
     'user_login' => array(
-      'template' => 'user-login',
       'arguments' => array('form' => NULL),
     ),
     'ting_search_form' => array(
       'arguments' => array('form' => NULL),
-      'preprocess' => array('alternator_preprocess_ting_search_form'),
     ),
   );
 }
@@ -106,12 +104,12 @@ function alternator_theme() {
 /**
  * Theme function used to change the login box.
  */
-function alternator_preprocess_user_login(&$variables){
-  unset($variables['form']['name']['#description']);
-  unset($variables['form']['pass']['#description']);
-  $variables['form']['pass']['#suffix'] = '<p>'.t('tekst der skal stå efter login').'</p>';
+function alternator_user_login($form) {
+  unset($form['name']['#description']);
+  unset($form['pass']['#description']);
+  $form['pass']['#suffix'] = '<p>'.t('tekst der skal stå efter login').'</p>';
   
-  $variables['rendered'] = drupal_render($variables['form']);
+  return drupal_render($form);
 }
 
 /**
