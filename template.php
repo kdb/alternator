@@ -136,13 +136,12 @@ function alternator_ding_library_user_loan_list_form($form) {
       }
     }
     // Wrap top buttons in a wrapper div. This is a hack, sorry :-(
-    $form['top_buttons']['renew']['#prefix'] = '<div class="sticky-element">';
+    $form['buttons']['renew']['#prefix'] = '<div class="button-element">';
+    $form['buttons']['renew_all']['#suffix'] = '</div>';
+    $form['top_buttons']['renew']['#prefix'] = '<div class="button-element">';
     $form['top_buttons']['renew_all']['#suffix'] = '</div>';
 
     $output .= drupal_render($form['top_buttons']);
-    
-    // Remove form buttons from bottom of the form
-    unset($form['buttons']);
   }
 
   $header = array(t('Select'), '', t('Title'), t('Loan date'), t('Due date'));
@@ -237,13 +236,12 @@ function alternator_ding_reservation_list_form($form) {
       }
     }
     // Wrap top buttons in a wrapper div. This is a hack, sorry :-(
-    $form['top_buttons']['update']['#prefix'] = '<div class="sticky-element">';
+    $form['buttons']['update']['#prefix'] = '<div class="button-element">';
+    $form['buttons']['remove']['#suffix'] = '</div>';
+    $form['top_buttons']['update']['#prefix'] = '<div class="button-element">';
     $form['top_buttons']['remove']['#suffix'] = '</div>';
 
     $output .= drupal_render($form['top_buttons']);
-
-    // Remove form buttons from bottom of the form
-    unset($form['buttons']);
   }
 
 
