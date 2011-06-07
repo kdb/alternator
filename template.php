@@ -29,10 +29,11 @@ function alternator_preprocess_node(&$vars){
  */
 function alternator_preprocess_page(&$variables){
   
-  if(in_array('page-user-login', $variables['template_files'])){
+  if (in_array('page-user-login', $variables['template_files'])) {
     $variables['content'] = '<h1>'.t('Login').'</h1>'.$variables['content'];
   }
-  if(in_array('page-user-status', $variables['template_files'])){
+
+  if (in_array('page-user-status', $variables['template_files'])) {
     $variables['content'] = '<h1>'.t('Min konto').'</h1>'.$variables['content'];
   }
   
