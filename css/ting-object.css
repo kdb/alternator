@@ -62,7 +62,11 @@
   display: none;
 }
 
-/* !v¾rkvisning */
+.ting-object-buttons a.button {
+  display: block;
+}
+
+/* Vaerkvisning */
 #ting-collection .language {
   margin-top: 4px;
 }
