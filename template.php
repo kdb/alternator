@@ -124,97 +124,79 @@ function alternator_ting_search_form(&$form){
 
 function alternator_ding_library_user_loan_list_form($form) {
   $date_format = variable_get('date_format_date_short', 'Y-m-d');
-  module_load_include('client.inc', 'ting');
-  $groups = array();
   $output = '';
 
-  if ($form['buttons']) {
-    $form['top_buttons'] = $form['buttons'];
-    // Add suffix to duplicated form button ids to ensure uniqueness
-    foreach (element_children($form['top_buttons']) as $key) {
-      if (isset($form['top_buttons'][$key]['#id'])) {
-        $form['top_buttons'][$key]['#id'] .= '-top';
-      }
-    }
-    // Wrap top buttons in a wrapper div. This is a hack, sorry :-(
-//    $form['buttons']['renew']['#prefix'] = '<div class="button-element">';
-//    $form['buttons']['renew_all']['#suffix'] = '</div>';
-//    $form['top_buttons']['renew']['#prefix'] = '<div class="button-element">';
-//    $form['top_buttons']['renew_all']['#suffix'] = '</div>';
+  // Load ting client, its used get local object ids.
+  module_load_include('client.inc', 'ting');
 
-    $output .= drupal_render($form['top_buttons']);
-  }
-
-  $header = array(t('Select'), '', t('Title'), t('Loan date'), t('Due date'));
-  $header = array(t('Select'), t('Title'), t('Due date'));
-
-  $colgroups = array(
-    array(
-      array(
-        'class' => 'col-selection',
-      ),
-    ),
-    array(
-      array(
-        'class' => 'col-title',
-      ),
-    ),
-    array(
-      array(
-        'class' => 'col-due-date',
-      ),
-    ),
-  );
-
+  // List each due data group in own list
   foreach ($form['loan_data']['#grouped'] as $date => $group) {
     // Overdue loans get preferential treatment. No checkboxes here.
     if ($date == 'overdue') {
-      $table_title = t('Overdue loans');
+      $title = t('Overdue loans');
     }
     // The normal loans get grouped by due date.
     else {
       if ($date == 'due') {
-        $table_title = t('Due today');
+        $title = t('Due today');
       }
       else {
-        $table_title = t('Due in @count days, @date', array('@date' => date('d/m/y', strtotime($date)), '@count' => ceil((strtotime($date) - $_SERVER['REQUEST_TIME']) / 86400)));
+        $title = t('Due in @count days, @date', array('@date' => date('d/m/y', strtotime($date)), '@count' => ceil((strtotime($date) - $_SERVER['REQUEST_TIME']) / 86400)));
       }
     }
 
-    $rows = array();
-    
+    // Build list for each date group.
+    $items = array();
     foreach ($group as $loan_id) {
+      // Get information about the current loan.
       $loan = $form['loan_data']['#value'][$loan_id];
-      $cells = array();
+      $class = $loan['is_renewable'] ? 'selectable' : 'immutable';
 
-      $cells['checkbox'] = array(
-        'class' => 'checkbox',
-        'data' => drupal_render($form['loans'][$loan_id]),
+      // Build information about the loan.
+      $item = array(
+        'checkbox' => drupal_render($form['loans'][$loan_id]),
+        'title' => theme('ding_library_user_list_item', 'loan', $loan),
+        'information' => array (
+            'due_date'  => array(
+                'label' => t('Due date'),
+                'value' => ding_library_user_format_date($loan['due_date'], $date_format),
+            ),
+        ),
+        'attributes' => array('class' => $class),
       );
 
-      $cells['title'] = array(
-        'class' => 'title',
-        'data' => theme('ding_library_user_list_item', 'loan', $loan),
-      );
-
-      $cells['due_date'] = array(
-        'class' => 'due_date',
-        'data' => ding_library_user_format_date($loan['due_date'], $date_format),
-      );
-
-      $rows[] = array(
-        'data' => $cells,
-        'class' => ($checkbox) ? 'selectable' : 'immutable',
-      );
+      $items[] = $item;
     }
 
-    if (!empty($rows)) {
-      $output .= theme('table', $header, $rows, array('colgroups' => $colgroups), $table_title);
+    // Render the items in this date group.
+    if (!empty($items)) {
+      $output .= theme('ding_mobile_reservation_item_list', $items, $title, array('class' => 'loan-list'));
     }
   }
 
+  // Check if any loans where found.
   if (empty($output)) {
-    return t('No loans found.');
+    return '<div class="no-loans">' . t('No loans found.') . '</div>';
+  }
+  else {
+    // Add top buttons, wait until now, because there may not be any reaservations
+    // and the above statement will fail.
+    if ($form['buttons']) {
+      $form['top_buttons'] = $form['buttons'];
+      // Add suffix to duplicated form button ids to ensure uniqueness.
+      foreach (element_children($form['top_buttons']) as $key) {
+        if (isset($form['top_buttons'][$key]['#id'])) {
+          $form['top_buttons'][$key]['#id'] .= '-top';
+        }
+      }
+      // Wrap top buttons in a wrapper div. This is a hack, sorry :-(
+      $form['buttons']['renew']['#prefix'] = '<div class="button-element">';
+      $form['buttons']['renew_all']['#suffix'] = '</div>';
+      $form['top_buttons']['renew']['#prefix'] = '<div class="button-element">';
+      $form['top_buttons']['renew_all']['#suffix'] = '</div>';
+
+      $output = drupal_render($form['top_buttons']) . $output;
+    }
   }
 
   $output .= drupal_render($form);
@@ -250,7 +232,9 @@ function alternator_ding_reservation_list_form($form) {
     }
 
     // Theme the items, the theme function is located in ding-mobile module
-    $output .= theme('ding_mobile_reservation_item_list', $items, t('Reservations ready for pickup'), array('class' => 'reservation-list'));
+    if (!empty($items)) {
+      $output .= theme('ding_mobile_reservation_item_list', $items, t('Reservations ready for pickup'), array('class' => 'reservation-list'));
+    }
   }
 
   // If avtive reservations is found.
@@ -271,7 +255,9 @@ function alternator_ding_reservation_list_form($form) {
     }    
 
     // Theme the items, the theme function is located in ding-mobile module
-    $output .= theme('ding_mobile_reservation_item_list', $items, t('Active reservations'), array('class' => 'reservation-list'));
+    if (!empty($items)) {
+      $output .= theme('ding_mobile_reservation_item_list', $items, t('Active reservations'), array('class' => 'reservation-list'));
+    }
   }
   
   // If output is empty, display text
