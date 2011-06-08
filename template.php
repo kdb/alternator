@@ -212,6 +212,7 @@ function alternator_ding_library_user_loan_list_form($form) {
       $output .= theme('table', $header, $rows, array('colgroups' => $colgroups), $table_title);
     }
   }
+
   if (empty($output)) {
     return t('No loans found.');
   }
@@ -226,25 +227,9 @@ function alternator_ding_library_user_loan_list_form($form) {
 function alternator_ding_reservation_list_form($form) {
   $date_format = variable_get('date_format_date_short', 'Y-m-d');
   $output = '';
+
+  // Load ting client, its used get local object ids.
   module_load_include('client.inc', 'ting');
-
-  if ($form['buttons']) {
-    $form['top_buttons'] = $form['buttons'];
-    // Add suffix to duplicated form button ids to ensure uniqueness
-    foreach (element_children($form['top_buttons']) as $key) {
-      if (isset($form['top_buttons'][$key]['#id'])) {
-        $form['top_buttons'][$key]['#id'] .= '-top';
-      }
-    }
-    // Wrap top buttons in a wrapper div. This is a hack, sorry :-(
-    $form['buttons']['update']['#prefix'] = '<div class="button-element">';
-    $form['buttons']['remove']['#suffix'] = '</div>';
-    $form['top_buttons']['update']['#prefix'] = '<div class="button-element">';
-    $form['top_buttons']['remove']['#suffix'] = '</div>';
-
-    $output .= drupal_render($form['top_buttons']);
-  }
-
 
   if (!empty($form['reservations']['#grouped']['fetchable'])) {
     $header = array(
@@ -443,8 +428,31 @@ function alternator_ding_reservation_list_form($form) {
     $output .= theme('table', $header, $rows, array('id' => 'reservations-active', 'colgroups' => $colgroups), t('Active reservations'));
   }
 
+  // If output is empty, display text
   if (empty($output)) {
-    return t('No reservations found.');
+    return '<div class="no-reservations">' . t('No reservations found.') . '</div>';
+  }
+  else {
+    // Add top buttons, wait until now, because there may not be any reaservations
+    // and the above statement will fail.
+    if ($form['buttons']) {
+      $form['top_buttons'] = $form['buttons'];
+      // Add suffix to duplicated form button ids to ensure uniqueness
+      foreach (element_children($form['top_buttons']) as $key) {
+        if (isset($form['top_buttons'][$key]['#id'])) {
+          $form['top_buttons'][$key]['#id'] .= '-top';
+        }
+    }
+     // Wrap top buttons in a wrapper div. This is a hack, sorry :-(
+    $form['buttons']['update']['#prefix'] = '<div class="button-element">';
+    $form['buttons']['remove']['#suffix'] = '</div>';
+    $form['top_buttons']['update']['#prefix'] = '<div class="button-element">';
+    $form['top_buttons']['remove']['#suffix'] = '</div>';
+
+    // Render top buttons and put theme in front of the output.
+    $output = drupal_render($form['top_buttons']) . $output;
+  }
+
   }
 
   $output .= '<div class="update-controls clear-block">';

@@ -514,3 +514,8 @@ th {
   background-image: url(../images/arrow-right-black.png);
   padding-bottom: 12px;
 }
+
+.no-reservations {
+  padding: 0px;
+  margin: 0 0 20px 0;
+}
