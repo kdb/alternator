@@ -519,3 +519,9 @@ th {
   padding: 0px;
   margin: 0 0 20px 0;
 }
+
+#ding-reservation-list-form h3 {
+    padding: 1em 1em 0.2em;
+    text-align: left;
+    text-transform: uppercase;
+}
