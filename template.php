@@ -299,3 +299,31 @@ function alternator_ding_reservation_list_form($form) {
 
   return $output;
 }
+
+/**
+ * Theming of debt details form.
+ */
+function alternator_ding_debt_list_form($form) {
+  $date_format = variable_get('date_format_date_short', 'Y-m-d');
+  $items = array();
+
+  // Loop through the payments and create array based on it.
+  foreach ($form['debts']['#value'] as $key => $data) {
+    $item = array(
+      'checkbox' => drupal_render($form['selected'][$data['id']]),
+      'title' => $data['display_title'],
+      'information' => array (
+        'data'  => array('label' => t('Date'), 'value' => ding_library_user_format_date($data['date'], $date_format)),
+        'amount' => array('label' => t('Amount'), 'value' => $data['amount']),
+      ),
+    );
+
+    $items[] = $item;
+  }
+
+  // Render a mobile friendly list.
+  $output .= theme('ding_mobile_reservation_item_list', $items, t('Avaliable payments'), array('class' => 'reservation-list checkbox-list'));
+  $output .= drupal_render($form);
+
+  return $output;
+}
