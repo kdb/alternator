@@ -394,6 +394,8 @@ input[type=submit], button {
   margin: 16px auto 20px;
 }
 
+
+
 textarea {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) inset;
   border: 1px solid #bbb;
@@ -416,28 +418,19 @@ textarea {
   display: none;
 }
 
-/*
 .button-element {
-  overflow: hidden;
-  padding: 8px 0;
+  padding: 8px 1em;
 }
 
 .button-element .form-submit {
-  width: 45%;
-  margin: 0.2em 0 0.5em;
-  padding: 8px 4px;
+  width: 47%;
 }
 
 .button-element .form-submit:first-child {
   float: left;
-  margin-left: 2.5%;
+  margin-right: 5%;
 }
 
-.button-element .form-submit:last-child {
-  float: right;
-  margin-right: 2.5%;
-}
-*/
 
 /* !---- TITLES ----- */
 h1, #ting-collection h1, .pane-title {
@@ -454,6 +447,12 @@ h1, #ting-collection h1, .pane-title {
 
 
 /* ! ----- / LAANESTATUS ----- */
+
+.pane-ding-library-user-loan-list-form,
+.pane-ding-reservation-list-form {
+  margin-top: 20px;
+}
+
 .pane-ding-library-user-loan-list-form h2,
 .pane-ding-reservation-list-form h2 {
   border-top: 2px solid #CAD4D4;
@@ -461,11 +460,61 @@ h1, #ting-collection h1, .pane-title {
   margin-bottom: 0;
 }
 
-.pane-ding-library-user-loan-list-form,
-.pane-ding-reservation-list-form {
-  margin-top: 20px;
+.pane-ding-library-user-loan-list-form h3,
+.pane-ding-reservation-list-form h3 {
+  margin: 1em 1em 0;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 13px;
 }
 
+.checkbox-list { /* Style ul.loan-list */
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid #cad4d4;
+  background: #eee;
+}
+
+.checkbox-list>li {
+  padding: 1em;
+  border-bottom: 1px solid #cad4d4;
+}
+
+.checkbox-list .form-item {
+  float: left;
+  width: 40px;
+  margin-top: 0;
+}
+
+.checkbox-list .title {
+  display: block;
+  font-weight: bold;
+}
+
+.update-controls {
+  padding: 0 1em;
+}
+
+.pane-ding-debt-notice {
+  margin: 0;
+  padding: 1em;
+  background: #fffed3;
+}
+
+.checkbox-list .information {
+  padding: 0;
+  list-style: none;
+  font-size: 0.8em;
+  padding-top: 0.4em;
+}
+
+.checkbox-list .information em {
+  font-weight: bold;
+  display: block;
+  font-style: normal;
+}
+
+/*
 .pane-ding-reservation-list-form {
   position: relative;
   z-index: 600;
@@ -493,6 +542,7 @@ th:first-child {
 th {
   padding-bottom: 0.3em;
 }
+*/
 
 /* ! ----- / Aabningstider ----- */
 .office-hours-week .week-info {
@@ -518,10 +568,4 @@ th {
 .no-reservations {
   padding: 0px;
   margin: 0 0 20px 0;
-}
-
-#ding-reservation-list-form h3 {
-    padding: 1em 1em 0.2em;
-    text-align: left;
-    text-transform: uppercase;
 }

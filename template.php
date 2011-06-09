@@ -170,7 +170,7 @@ function alternator_ding_library_user_loan_list_form($form) {
 
     // Render the items in this date group.
     if (!empty($items)) {
-      $output .= theme('ding_mobile_reservation_item_list', $items, $title, array('class' => 'loan-list'));
+      $output .= theme('ding_mobile_reservation_item_list', $items, $title, array('class' => 'loan-list checkbox-list'));
     }
   }
 
@@ -233,7 +233,7 @@ function alternator_ding_reservation_list_form($form) {
 
     // Theme the items, the theme function is located in ding-mobile module
     if (!empty($items)) {
-      $output .= theme('ding_mobile_reservation_item_list', $items, t('Reservations ready for pickup'), array('class' => 'reservation-list'));
+      $output .= theme('ding_mobile_reservation_item_list', $items, t('Reservations ready for pickup'), array('class' => 'reservation-list checkbox-list'));
     }
   }
 
@@ -256,7 +256,7 @@ function alternator_ding_reservation_list_form($form) {
 
     // Theme the items, the theme function is located in ding-mobile module
     if (!empty($items)) {
-      $output .= theme('ding_mobile_reservation_item_list', $items, t('Active reservations'), array('class' => 'reservation-list'));
+      $output .= theme('ding_mobile_reservation_item_list', $items, t('Active reservations'), array('class' => 'reservation-list checkbox-list'));
     }
   }
   
