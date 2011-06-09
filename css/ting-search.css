@@ -31,10 +31,11 @@
   padding: 1em;
 }
 
-#ting-search-result h3,
-#ting-collection h3 {
+.graybox-btns h3 {
   margin: 0;
   font-size: 1em;
+  font-weight: bold;
+  text-transform: none;
 }
 
 #ting-search-sort,

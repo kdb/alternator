@@ -186,6 +186,13 @@ h2.articleheader {
   margin-bottom: 10px;
 }
 
+h3 {
+  margin: 1em 1em 0;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 13px;
+}
+
 .more-link{
   text-align: left;
 }
@@ -287,7 +294,7 @@ h2.articleheader {
   display: none;
 }
  
-#ding-reservation-confirm-form > div p, #ding-reservation-confirm-form > div div{
+#ding-reservation-confirm-form > div p {
   margin: 1em;
 }
 
@@ -303,13 +310,14 @@ h2.articleheader {
 }
 
 
-#drupal-messages .status{
-  background-color: #F0F0F0;
-  padding: 10px;
+.messages {
+  padding: 2em 1em 2em 4em;  
 }
-.pane-ding-debt-notice{
-  margin-left: 10px;
+
+.status{
+  background: #edf3fe url(../images/icon-information.png) 1.7em 50% no-repeat;
 }
+
 
 /***************
  * Contact form
@@ -381,9 +389,13 @@ input[type=email] {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) inset;
 }
 
-input[type=submit], button {
+input[type=submit], 
+button,
+a.button,
+.confirmation .container-inline a,
+.buttons .view-online a {
   display: block;
-  width: 90%;
+  width: 100%;
   border: none;
   padding: 8px 0 10px;
   border-radius: 16px 16px 16px 16px;
@@ -392,9 +404,12 @@ input[type=submit], button {
   background-image: -moz-linear-gradient(top, rgb(252,252,252), rgb(250,250,250) 6%, rgb(250,250,250) 40%, rgb(230,230,230) 90%, rgb(220,220,220));
   background-image: -webkit-gradient(linear, center top, center bottom, from(rgb(252,252,252)), to(rgb(220,220,220)), color-stop(6%, rgb(250,250,250)), color-stop(40%, rgb(250,250,250)), color-stop(90%, rgb(230,230,230)));
   margin: 16px auto 20px;
+  text-align: center;
+  text-decoration: none;
+  color: #222;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
 }
-
-
 
 textarea {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) inset;
@@ -418,15 +433,25 @@ textarea {
   display: none;
 }
 
-.button-element {
+.button-element,
+.container-inline {
   padding: 8px 1em;
+  overflow: hidden;
 }
 
-.button-element .form-submit {
+.container-inline a {
+  float: left;
+  line-height: 1.3em;
+}
+
+.button-element .form-submit,
+.confirmation .container-inline a,
+.container-inline input {
   width: 47%;
 }
 
-.button-element .form-submit:first-child {
+.button-element .form-submit:first-child,
+.confirmation .container-inline input:first-child {
   float: left;
   margin-right: 5%;
 }
@@ -460,14 +485,6 @@ h1, #ting-collection h1, .pane-title {
   margin-bottom: 0;
 }
 
-.pane-ding-library-user-loan-list-form h3,
-.pane-ding-reservation-list-form h3 {
-  margin: 1em 1em 0;
-  text-transform: uppercase;
-  font-weight: normal;
-  font-size: 13px;
-}
-
 .checkbox-list { /* Style ul.loan-list */
   padding: 0;
   list-style: none;
@@ -476,13 +493,14 @@ h1, #ting-collection h1, .pane-title {
 }
 
 .checkbox-list>li {
-  padding: 1em;
+  padding: 1em 1em 1em 50px;
   border-bottom: 1px solid #cad4d4;
 }
 
 .checkbox-list .form-item {
   float: left;
   width: 40px;
+  margin-left: -40px;
   margin-top: 0;
 }
 
@@ -506,43 +524,17 @@ h1, #ting-collection h1, .pane-title {
   list-style: none;
   font-size: 0.8em;
   padding-top: 0.4em;
+  color: #222;
 }
 
 .checkbox-list .information em {
   font-weight: bold;
-  display: block;
   font-style: normal;
 }
 
-/*
-.pane-ding-reservation-list-form {
-  position: relative;
-  z-index: 600;
-  background: #fff;
+.information .list-item {
+  padding-bottom: 0.1em;
 }
-
-.pane-ding-debt-notice {
-  padding: 0.5em 1em;
-}
-
-.pane-ding-reservation-list-form .update-controls {
-  margin: 0 1em;
-}
-
-caption {
-  padding: 1em 1em 0.2em;
-  text-align: left;
-  text-transform: uppercase;
-}
-
-th:first-child {
-  padding-left: 1em;
-}
-
-th {
-  padding-bottom: 0.3em;
-}
-*/
 
 /* ! ----- / Aabningstider ----- */
 .office-hours-week .week-info {
