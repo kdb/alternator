@@ -17,7 +17,6 @@
  */
 ?>
 <div id="ting-item-<?php print $object->localId; ?>" class="ting-item ting-item-full">
-
   <h1>
     <?php print $title; ?>
     <?php
@@ -43,9 +42,6 @@
     <div class="ting-status waiting"><?php print t('waiting for data'); ?></div>
   <?php } ?>    
   
-
-
-
   <?php if ($image) { ?>
   <div class="picture">
     <?php print $image; ?>
@@ -63,8 +59,6 @@
     </div>
     <div class="abstract"><?php print implode(' ; ', format_danmarc2((array)$object->record['dcterms:abstract'][''])) ?></div>
     
-  
- 
     <!-- RESERVE BUTTON -->
     
     <?php if ($buttons) :?>

@@ -17,7 +17,5 @@ foreach ($ting_list as $type => $objects) {
   }
   print $objects;
 }
-
 ?>
-
 </div>

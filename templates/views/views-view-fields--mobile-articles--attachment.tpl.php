@@ -20,7 +20,6 @@
  */
 
 ?>
-
 <a href="<?php print url('node/'.$row->nid)?>">
 <?php foreach ($fields as $id => $field): ?>
 

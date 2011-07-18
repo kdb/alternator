@@ -8,7 +8,6 @@
  
 //TODO: Please avoid inline styles
 ?>
-
 <p style="margin-left:10px;">
   <?php print t('Velkommen @name',array('@name' => $display_name))?>
 </p>
