@@ -5,9 +5,6 @@
  * @file
  * Template to render a Ting collection of books.
  */
-
-#var_dump($collection);
-
 ?>
   <li class="clear-block">
   

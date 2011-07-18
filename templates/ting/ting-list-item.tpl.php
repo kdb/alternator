@@ -17,10 +17,6 @@
  */
 ?>
 <!-- ting-list-item.tpl -->
-
-<?php #var_dump($object)?>
-
-
 <div id="ting-item-<?php print $local_id; ?>" class="ting-item clearfix graybox-btns">
 
 <div class="content clearfix clear-block">
