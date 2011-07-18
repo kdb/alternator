@@ -5,6 +5,8 @@
  * @file alma_user_status_block.tpl.php
  * Template for the user status block.
  */
+ 
+//TODO: Please avoid inline styles
 ?>
 
 <p style="margin-left:10px;">
