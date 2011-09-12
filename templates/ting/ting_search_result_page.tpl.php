@@ -6,7 +6,6 @@
  * Template for the search result page itself.
  */
 ?>
-
 <h1><?php print t('Search result')?></h1>
 
 <div id="ting-search-results">

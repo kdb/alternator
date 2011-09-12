@@ -17,45 +17,39 @@
  */
 ?>
 <!-- ting-list-item.tpl -->
-
-<?php #var_dump($object)?>
-
-
 <div id="ting-item-<?php print $local_id; ?>" class="ting-item clearfix graybox-btns">
-
-<div class="content clearfix clear-block">
+  <div class="content clearfix clear-block">
     <div class="picture">
       <?php if ($image) { ?>
         <?php print $image; ?>
       <?php } ?>
     </div>
-  
-<div class="item">
-<a href="<?php print $object->url ?>">
-    <div class="info">
-      
-      <h3><?php print $object->title; ?></h3>
+    <div class="item">
+      <a href="<?php print $object->url ?>">
+        <div class="info">
+          <h3><?php print $object->title; ?></h3>
 
-      <span class="author"><em><?php echo t('by'); ?></em>
-      <?php print $object->creators_string ?></span>
-      <span class='date'><?php print $date; ?></span>
+          <span class="author">
+            <em><?php echo t('by'); ?></em>
+            <?php print $object->creators_string ?>
+          </span>
+          <span class='date'><?php print $date; ?></span>
 
-      <?php
-        // TODO: This should go into ting_availability.
-      if ($type != 'Netdokument') { ?>
-      <div><div class="ting-status waiting">Afventer data…</div></div>
-      <?php } ?>
+          <?php
+          // TODO: This should go into ting_availability.
+          if ($type != 'Netdokument') { ?>
+            <div><div class="ting-status waiting">Afventer data…</div></div>
+          <?php } ?>
 
-      <div class='language'><?php echo t('Language') . ': ' . $language; ?></div>
+          <div class='language'><?php echo t('Language') . ': ' . $language; ?></div>
 
-      <?php
-      foreach ($additional_creators as $creator) {
-        print "<p>" . $creator . "</p>";
-      }
-      ?>
-
+          <?php
+            foreach ($additional_creators as $creator) {
+              print "<p>" . $creator . "</p>";
+            }
+          ?>
+        </div>
+      </a>
     </div>
-</a>
-</div>
-</div>
+  </div>
 </div>

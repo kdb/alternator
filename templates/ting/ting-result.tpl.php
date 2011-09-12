@@ -1,8 +1,3 @@
-
-
-
-
-
 <div id="ting-search-summary">
   <?php print t('Showing !firstResult-!lastResult of !count results',
                 array(
@@ -25,4 +20,3 @@
   <ul>
   </ul>
 </div>
-

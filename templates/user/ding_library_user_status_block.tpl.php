@@ -5,23 +5,9 @@
  * @file alma_user_status_block.tpl.php
  * Template for the user status block.
  */
-
-if( $user_status['loan_overdue_count'] >= 1){
-  $loan_status  = "warning";
-}
-else{
-  $loan_status  = "default";
-}
-
-if( $user_status['reservation_count'] >= 1){
-  $reservation_status = "ok";
-}
-else{
-  $reservation_status = "default";
-
-}
+ 
+//TODO: Please avoid inline styles
 ?>
-
 <p style="margin-left:10px;">
   <?php print t('Velkommen @name',array('@name' => $display_name))?>
 </p>
