@@ -134,7 +134,7 @@ body:not(.front) .bottom-menu li:not(.frontpage):not(.mainsite):nth-child(odd) >
 /***************
  * Page content
  ***************/
-.imagecache-mobile-list-image{
+.imagecache-mobile_list_image{
   width: 100%;
   height: auto;
   display: block;
