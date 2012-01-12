@@ -22,11 +22,23 @@ function alternator_preprocess_node(&$vars){
 
     $vars['submitted'] = format_date($vars['created'], 'large', 'Europe/Copenhagen', $language->language);
 
-    if($vars['type'] == 'event'){
+    if ($vars['type'] == 'event'){
       $vars['submitted'] = $vars['node']->field_datetime[0]['view'];
       $vars['price'] = $vars['node']->field_entry_price[0]['view'];
     }
-    $vars['content'] = $vars['node']->content['body']['#value'];
+
+    /*
+     * 'Unprint' some node elements and rerender. Not really the right
+     * way to handle this, but legacy code simply grabbed
+     * $node->content['body']['#value'], and redoing it properly would
+     * require updating of too many existing sites.
+     */
+    unset($vars['node']->content['#printed']);
+    unset($vars['node']->content['body']['#printed']);
+    if (isset($vars['node']->content['place2book_infolink'])) {
+      unset($vars['node']->content['place2book_infolink']['#printed']);
+    }
+    $vars['content'] = drupal_render($vars['node']->content);
   }
 }
 
