@@ -14,8 +14,9 @@ function alternator_preprocess_node(&$vars){
     unset($vars['field_content_images_rendered']);
     unset($vars['field_file_attachments_rendered']);
 
-    // If field_mobile_image exists, use that for images, else use list_image.
-    $image_field = isset($vars['field_mobile_image']) ? $vars['field_mobile_image'] : $vars['field_list_image'];
+    // If ding_mobile_images is enabled, use field_mobile_image for
+    // images, else use list_image.
+    $image_field = module_exists('ding_mobile_images') ? $vars['field_mobile_image'] : $vars['field_list_image'];
     if (!empty($image_field[0]['fid'])) {
       $vars['mobile_image_rendered'] = theme('imagecache', 'mobile_list_image', $image_field[0]['filepath']);
     }
