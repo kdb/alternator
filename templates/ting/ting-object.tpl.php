@@ -73,5 +73,8 @@
   <div class="additional-info collapsible-info">
     <?php print $ting_details; ?>
 
+    <?php if (isset($additional_content)):
+      print drupal_render($additional_content);
+    endif; ?>
   </div><!-- /additional-info -->
 </div><!-- /#ting-item -->
