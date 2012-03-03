@@ -14,7 +14,7 @@
   <?php print $scripts; ?>
 </head>
 <body class="<?php print $body_classes; ?>">
-  <div class="header">
+  <div class="header" id="page-header">
     <div class="top">
     <?php if ($user->uid): ?>
       <?php print l(t('Logout'), 'logout', array('attributes' => array('class' => 'login-btn'))) ?>
