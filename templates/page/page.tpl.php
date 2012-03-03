@@ -1,7 +1,6 @@
 <?php
-
 /**
- * @file page.tpl.php
+ * @file
  * Main page template file for the alternator theme.
  */
 ?>
@@ -18,9 +17,9 @@
   <div class="header">
     <div class="top">
     <?php if ($user->uid): ?>
-      <?php print l(t('Logout'),'logout', array('attributes' => array('class' => 'login-btn'))) ?>
+      <?php print l(t('Logout'), 'logout', array('attributes' => array('class' => 'login-btn'))) ?>
     <?php else: ?>
-      <?php print l(t('Log ind'),'user/login', array('attributes' => array('class' => 'login-btn'),'query' => 'destination=user/status')) ?>
+      <?php print l(t('Log ind'), 'user/login', array('attributes' => array('class' => 'login-btn'), 'query' => 'destination=user/status')) ?>
     <?php endif; ?>
     </div>
     <div class="bottom">
@@ -30,7 +29,7 @@
     </div>
   </div>
   <?php print $main_menu ?>
-  
+
   <?php if ($help OR $messages): ?>
     <div id="drupal-messages">
       <?php print $help ?>
@@ -41,7 +40,7 @@
   <?php print $content; ?>
 
   <?php print $bottom_menu; ?>
-  
+
   <?php print $closure; ?>
 </body>
 </html>
