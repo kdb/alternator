@@ -13,7 +13,7 @@
   <?php print $styles; ?>
   <?php print $scripts; ?>
 </head>
-<body class="<?php print $body_classes; ?><?php if (!empty($admin)) print ' '.admin;  ?>">
+<body class="<?php print $body_classes; ?>">
   <div class="header">
     <div class="top">
     <?php if ($user->uid): ?>

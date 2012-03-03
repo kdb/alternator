@@ -73,6 +73,10 @@ function alternator_preprocess_page(&$variables) {
   }
   $variables['bottom_menu'] = theme('links', $bottom_menu, array('class' => 'bottom-menu mobilemenu clear-block'));
 
+  // Add admin class to the body if applicable.
+  if (!empty($variables['admin'])) {
+    $variables['body_classes'] .= ' admin';
+  }
 }
 
 /**
